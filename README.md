@@ -19,3 +19,23 @@ ELASTICSEARCH_FORMATTER        | Formatter to be used (default_format, influx_li
 ELASTICSEARCH_FORMATTER_REGEXP | RegExp to be used (only works for regex_format)
 
 To understand which values are valid, please lock to the [stastd-elasticsearch-backend](https://github.com/lucassabreu/statsd-elasticsearch-backend/tree/v0.4.1).
+
+### Docker Compose example:
+
+```yaml
+version: '3'
+
+services:
+    statsd:
+        image: lucassabreu/stastd-elasticsearch-backend
+        enviroment:
+            - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
+            - ELASTICSEARCH_PORT=9243
+            - ELASTICSEARCH_TRANSPORT=https
+            - ELASTICSEARCH_USERNAME=elastic
+            - ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD}
+        ports:
+            - 8125:8125/udp
+            - 8126:8126
+        restart: always
+```
