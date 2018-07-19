@@ -39,3 +39,15 @@ services:
             - 8126:8126
         restart: always
 ```
+
+### Docker run example:
+
+```sh
+docker run -d --name=statsd -p 8125:8125/udp -p 8126:8126 --restart=always \
+    -e="ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}" \
+    -e="ELASTICSEARCH_PORT=9243" \
+    -e="ELASTICSEARCH_TRANSPORT=https" \
+    -e="ELASTICSEARCH_USERNAME=elastic" \
+    -e="ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD}" \
+    lucassabreu/stastd-elasticsearch-backend
+```
