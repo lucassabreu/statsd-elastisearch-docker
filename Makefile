@@ -1,4 +1,4 @@
 all: build
 
 build:
-	docker build . --tag=lucassabreu/stastd-elasticsearch-backend
+	docker build . --tag=lucassabreu/stastd-elasticsearch-docker
